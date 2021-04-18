@@ -10,14 +10,69 @@
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
   <script crossorigin src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+
+  <style>
+    body{
+      background-color: #282a36;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #app{
+      margin: auto;
+      width: 90%;
+    }
+
+  </style>
+
 </head>
 
 <body>
 <div id="app"></div>
 
 <script type="text/babel">
-  function App() {
-    return <div>Meu App</div>
+  const Compras = () =>{
+    const [contador,setContator] = React.useState(0);
+    function comprar(){
+      setContator(contador + 1 )
+    }
+
+    return(
+      <div>
+        <p>Total : {contador}</p>
+        <p>Preço: R$ {contador * 250},00</p>
+        <button onClick={comprar}>Comprar</button>
+
+      </div>
+    )
+  }
+
+  const Button = () =>{
+    return <button>Comprar</button>
+  }
+
+  const Titulo = () =>{
+    const numero = Math.random() * 200;
+    console.log(numero)
+
+    return <h1> Numero Randon : {Math.round(numero)}</h1>
+  }
+
+  const App = () => {
+    return <div>
+      <Compras />
+
+      <Titulo />
+      <h2>Meu App</h2>
+      <Button/>
+
+      <h2>Compre aqui também</h2>
+      <Button />
+
+    </div>
+
   }
 
   ReactDOM.render(<App />, document.getElementById('app'))
